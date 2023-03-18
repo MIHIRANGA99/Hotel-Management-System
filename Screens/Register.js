@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import TextField from "../Components/TextField/TextField";
-import Button from '../Components/Button/Button'
+import Button from "../Components/Button/Button";
 import { registerUser } from "../firebase/utils";
 import mainStyles from "../styles/mainStyles";
 
@@ -23,7 +23,14 @@ const Register = ({ navigation }) => {
 
   return (
     <View style={mainStyles.centerPage}>
-      <View style={{flex: 1, justifyContent: "center", width: "90%"}}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          width: "90%",
+          position: "relative",
+        }}
+      >
         <TextField
           placeholder="Username"
           onChange={(text) => setUsername(text)}
@@ -43,15 +50,28 @@ const Register = ({ navigation }) => {
           isPassword
           onChange={(text) => setConfPassword(text)}
         />
-        <View style={{display: 'flex', justifyContent: 'center', alignItems: "center"}}>
-            <Button title="Register" onClick={() => validateUser()} />
+        <View
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Button title="Register" onClick={() => validateUser()} />
         </View>
-        <Text>
-          Already registered?{" "}
+        <View
+          style={{
+            position: "absolute",
+            bottom: "3%",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
           <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-            <Text>Login</Text>
+            <Text style = {{color: "#382514"}}>Already registered? Login</Text>
           </TouchableOpacity>
-        </Text>
+        </View>
       </View>
     </View>
   );
