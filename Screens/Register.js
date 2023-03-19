@@ -69,7 +69,7 @@ const Register = ({ navigation }) => {
           }}
         >
           <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-            <Text style = {{color: "#382514"}}>Already registered? Login</Text>
+            <Text style = {{color: "#341B54"}}>Already registered? Login</Text>
           </TouchableOpacity>
         </View>
       </View>

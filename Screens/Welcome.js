@@ -1,19 +1,16 @@
-import React, { useEffect } from 'react'
-import { Text, View } from 'react-native'
+import React from 'react'
+import { Button, Text, View } from 'react-native'
+import mainStyles from '../styles/mainStyles'
 
 const Welcome = ({navigation}) => {
-    
-    useEffect(() => {
-        setTimeout(() => {
-            navigation.navigate("Register");
-        }, 1000);
-    }, [])
 
   return (
-    <View>
-        <Text>
-            {/* start from here */}
-        </Text>
+    <View style = {mainStyles.centerPage}>
+        <Button title='Register' onPress={() => navigation.navigate('Register')} />
+        <Button onPress={() => navigation.navigate("CRUD")} title="View My Sample Crud" />
+        <Text style = {{fontSize: 24, textAlign: 'center', marginVertical: 24}}>View Components</Text>
+        <Button onPress={() => navigation.navigate("Button")} title="Button Component" />
+        <Button onPress={() => navigation.navigate("TextField")} title="Text Field Component" />
     </View>
   )
 }
