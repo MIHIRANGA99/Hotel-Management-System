@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const buttonStyles = StyleSheet.create({
   primaryButton: {
-    backgroundColor: "#382514",
+    backgroundColor: "#341B54",
     borderRadius: 30,
     display: "flex",
     minWidth: "30%",
