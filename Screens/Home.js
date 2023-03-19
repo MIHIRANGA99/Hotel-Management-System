@@ -18,9 +18,9 @@ const Home = ({navigation}) => {
           <Text style = {{fontSize: 36, color: "#341B54", fontWeight: "500"}}>{user}</Text>
         </View>
         <View style = {{display: 'flex', flex: 1, justifyContent: "flex-end"}}>
-          <Button title="Book a Hotel" />
-          <Button title="Order Food" />
-          <Button title="Manage Bookings" />
+          <Button extraStyles={{marginTop: 12}} title="Book a Hotel" />
+          <Button extraStyles={{marginTop: 12}} title="Order Food" />
+          <Button extraStyles={{marginTop: 12}} title="Manage Bookings" />
         </View>
     </View>
   )
