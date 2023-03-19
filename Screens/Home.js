@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
+import Button from '../Components/Button/Button';
 import { getCurrentUser } from '../firebase/utils';
 
 const Home = ({navigation}) => {
@@ -11,8 +12,16 @@ const Home = ({navigation}) => {
     })
 
   return (
-    <View>
-        <Text>Hello, {user}</Text>
+    <View style = {{flex: 1, justifyContent: 'space-between', margin: "5%"}}>
+        <View style = {{display: 'flex', alignItems: 'center', flex: 1}}>
+          <Text style = {{fontSize: 20, color: "#341B54", fontWeight: "500"}}>Welcome Back,</Text>
+          <Text style = {{fontSize: 36, color: "#341B54", fontWeight: "500"}}>{user}</Text>
+        </View>
+        <View style = {{display: 'flex', flex: 1, justifyContent: "flex-end"}}>
+          <Button title="Book a Hotel" />
+          <Button title="Order Food" />
+          <Button title="Manage Bookings" />
+        </View>
     </View>
   )
 }
