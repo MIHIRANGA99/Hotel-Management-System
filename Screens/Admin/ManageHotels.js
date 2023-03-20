@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView } from "react-native";
+import { Text, View } from "react-native";
+import { Modal, ScrollView } from "react-native";
+import Button from "../../Components/Button/Button";
 import HotelCard from "../../Components/HotelCard/HotelCard";
-import { getDataFromCollection } from "../../firebase/utils";
+import {
+  deleteFromCollection,
+  getDataFromCollection,
+} from "../../firebase/utils";
 
 const ManageHotels = () => {
   const [hotels, setHotels] = useState([]);
+  const [showPopup, setShowPopUp] = useState(false);
+  const [selectedHotel, setSelectedHotel] = useState({});
 
   useEffect(() => {
+    readHotels();
+  }, []);
+
+  const readHotels = () => {
     getDataFromCollection("Hotels")
       .then((res) => setHotels(res))
       .catch((e) => console.error(e));
-  }, []);
+  };
 
   return (
     <ScrollView style={{ padding: 8 }}>
@@ -22,9 +33,40 @@ const ManageHotels = () => {
           location={hotel.location}
           price={hotel.amount}
           photoURL={hotel.url}
-          extraStyles = {{marginVertical: 8}}
+          extraStyles={{ marginVertical: 8 }}
+          onDelete={() => {
+            setShowPopUp(true);
+            setSelectedHotel(hotel);
+          }}
         />
       ))}
+      <Modal transparent visible={showPopup} animationType="slide">
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <View
+            style={{ backgroundColor: "white", padding: 24, borderRadius: 20 }}
+          >
+            <Text>Are You Sure To Delete {selectedHotel.hotelName}?</Text>
+            <View
+              style={{ flexDirection: "row", justifyContent: "space-evenly" }}
+            >
+              <Button onClick={() => setShowPopUp(false)} title="Cancel" />
+              <Button
+                onClick={() => {
+                  deleteFromCollection(
+                    "Hotels",
+                    selectedHotel.id,
+                    () => {readHotels(); setShowPopUp(false);},
+                    () => console.error("Error occurd")
+                  );
+                }}
+                title="Confirm"
+              />
+            </View>
+          </View>
+        </View>
+      </Modal>
     </ScrollView>
   );
 };
