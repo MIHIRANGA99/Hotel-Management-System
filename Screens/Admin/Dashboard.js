@@ -10,7 +10,7 @@ const Dashboard = ({navigation}) => {
         </View>
         <View style = {{marginBottom: "3%"}}>
             <Button extraStyles={{marginTop: 12}} title='Manage Bookings' />
-            <Button extraStyles={{marginTop: 12}} title='Manage Hotels' />
+            <Button onClick={() => navigation.navigate("ManageHotels")} extraStyles={{marginTop: 12}} title='Manage Hotels' />
             <Button onClick={() => navigation.navigate("AddHotel")} extraStyles={{marginTop: 12}} title='Add New Hotel' />
             <Button extraStyles={{marginTop: 12}} title='Manage Food' />
         </View>

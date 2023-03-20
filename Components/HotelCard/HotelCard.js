@@ -3,9 +3,9 @@ import { Image, Text, View } from 'react-native'
 import Button from '../Button/Button'
 import hotelCardStyles from './hotelCardStyles'
 
-const HotelCard = ({hotelName, ratings, bedRooms, location, price, photoURL, onEdit, onDelete}) => {
+const HotelCard = ({hotelName, ratings, bedRooms, location, price, photoURL, onEdit, onDelete, extraStyles}) => {
   return (
-    <View style = {hotelCardStyles.cardBackground}>
+    <View style = {[hotelCardStyles.cardBackground, extraStyles]}>
         <View style = {{flex: 3, backgroundColor: 'gray', borderRadius: 6, width: "100%", maxHeight: 200}}>
             <Image style = {{height: "100%", width: "100%", resizeMode: 'cover', borderRadius: 6}}  source={{
                 uri: photoURL
