@@ -8,6 +8,7 @@ import Register from './Screens/Register';
 import SampleCRUD from './Screens/SampleCRUD';
 import TextFieldComponent from './Screens/Components/TextFieldComponent';
 import Welcome from './Screens/Welcome';
+import Dashboard from './Screens/Admin/Dashboard';
 
 export default function App() {
 
@@ -20,6 +21,7 @@ export default function App() {
         <Stack.Screen name='Register' component={Register} />
         <Stack.Screen name='Login' component={Login} />
         <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='AdminDB' options={{title: 'Admin Dashboard'}} component={Dashboard} />
 
         {/* Components */}
         <Stack.Screen name='Button' component={ButtonComponent} />
