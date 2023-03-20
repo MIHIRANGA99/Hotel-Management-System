@@ -11,6 +11,7 @@ import Welcome from './Screens/Welcome';
 import Dashboard from './Screens/Admin/Dashboard';
 import AddHotel from './Screens/Admin/AddHotel';
 import AlertPopComponent from './Screens/Components/AlertPopComponent';
+import ManageHotels from './Screens/Admin/ManageHotels';
 
 export default function App() {
 
@@ -25,6 +26,7 @@ export default function App() {
         <Stack.Screen name='Home' component={Home} />
         <Stack.Screen name='AdminDB' options={{title: 'Admin Dashboard'}} component={Dashboard} />
         <Stack.Screen name='AddHotel' options={{title: 'Add New Hotel'}} component={AddHotel} />
+        <Stack.Screen name='ManageHotels' options={{title: 'Manage Hotels'}} component={ManageHotels} />
 
         {/* Components */}
         <Stack.Screen name='Button' component={ButtonComponent} />
