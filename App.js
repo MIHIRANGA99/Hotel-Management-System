@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ButtonComponent from './Screens/ButtonComponent';
+import ButtonComponent from './Screens/Components/ButtonComponent';
 import Home from './Screens/Home';
-import HotelCardComponent from './Screens/HotelCardComponent';
+import HotelCardComponent from './Screens/Components/HotelCardComponent';
 import Login from './Screens/Login';
 import Register from './Screens/Register';
 import SampleCRUD from './Screens/SampleCRUD';
-import TextFieldComponent from './Screens/TextFieldComponent';
+import TextFieldComponent from './Screens/Components/TextFieldComponent';
 import Welcome from './Screens/Welcome';
 
 export default function App() {

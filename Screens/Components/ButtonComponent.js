@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View } from 'react-native'
-import Button from '../Components/Button/Button'
+import Button from '../../Components/Button/Button'
 
 const ButtonComponent = () => {
   return (

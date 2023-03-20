@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollView } from 'react-native'
-import HotelCard from '../Components/HotelCard/HotelCard'
+import HotelCard from '../../Components/HotelCard/HotelCard'
 
 const HotelCardComponent = () => {
   return (
