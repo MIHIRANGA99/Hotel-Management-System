@@ -12,6 +12,7 @@ const Welcome = ({navigation}) => {
         <Button onPress={() => navigation.navigate("Button")} title="Button Component" />
         <Button onPress={() => navigation.navigate("TextField")} title="Text Field Component" />
         <Button onPress={() => navigation.navigate("HotelCard")} title="Hotel Card Component" />
+        <Button onPress={() => navigation.navigate("AlertPop")} title="Alert Pop Component" />
     </View>
   )
 }
