@@ -9,7 +9,13 @@ const Home = ({navigation}) => {
 
     useEffect(() => {
         setUser(getCurrentUser().displayName);
-    })
+    }, []);
+
+    useEffect(() => {
+      if (getCurrentUser().email === 'runkavisha@gmail.com') {
+        navigation.navigate("AdminDB");
+      }
+    }, [user])
 
   return (
     <View style = {{flex: 1, justifyContent: 'space-between', margin: "5%"}}>
