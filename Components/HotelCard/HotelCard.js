@@ -3,7 +3,7 @@ import { Image, Text, View } from 'react-native'
 import Button from '../Button/Button'
 import hotelCardStyles from './hotelCardStyles'
 
-const HotelCard = ({hotelName, ratings, bedRooms, location, price, photoURL}) => {
+const HotelCard = ({hotelName, ratings, bedRooms, location, price, photoURL, onEdit, onDelete}) => {
   return (
     <View style = {hotelCardStyles.cardBackground}>
         <View style = {{flex: 3, backgroundColor: 'gray', borderRadius: 6, width: "100%", maxHeight: 200}}>
@@ -26,10 +26,10 @@ const HotelCard = ({hotelName, ratings, bedRooms, location, price, photoURL}) =>
         </View>
         <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', width: "100%"}}>
             <View style = {{flex: 1, marginRight: 6}}>
-                <Button title="Edit" />
+                <Button onClick={() => onEdit()} title="Edit" />
             </View>
             <View style = {{flex: 1, marginLeft: 6}}>
-                <Button extraStyles={{backgroundColor: "#730000"}} title="Delete" />
+                <Button onClick={() => onDelete()} extraStyles={{backgroundColor: "#730000"}} title="Delete" />
             </View>
         </View>
     </View>

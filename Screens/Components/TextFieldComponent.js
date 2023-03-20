@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import TextField from "../Components/TextField/TextField";
+import TextField from "../../Components/TextField/TextField";
 
 const TextFieldComponent = () => {
   return (
