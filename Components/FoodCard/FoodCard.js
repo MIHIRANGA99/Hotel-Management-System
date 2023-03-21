@@ -26,7 +26,7 @@ const FoodCard = ({FoodName, Price, photoURL, onEdit, onDelete, extraStyles}) =>
                 <Button onClick={() => onEdit()} title="Edit" />
             </View>
             <View style = {{flex: 1, marginLeft: 6}}>
-                <Button onClick={() => onDelete()} extraStyles={{backgroundColor: "#730000"}} title="Delete" />
+                <Button onClick={() => onDelete()} extraStyles={{backgroundColor: "#CC0E0E"}} title="Delete" />
             </View>
         </View>
     </View>
