@@ -13,6 +13,7 @@ import AddHotel from './Screens/Admin/AddHotel';
 import AlertPopComponent from './Screens/Components/AlertPopComponent';
 import ManageHotels from './Screens/Admin/ManageHotels';
 import EditHotel from './Screens/Admin/EditHotel';
+import ViewHotels from './Screens/Client/ViewHotels';
 
 export default function App() {
 
@@ -29,6 +30,7 @@ export default function App() {
         <Stack.Screen name='AddHotel' options={{title: 'Add New Hotel'}} component={AddHotel} />
         <Stack.Screen name='ManageHotels' options={{title: 'Manage Hotels'}} component={ManageHotels} />
         <Stack.Screen name='EditHotel' options={{title: 'Edit Hotel'}} component={EditHotel} />
+        <Stack.Screen name='ViewHotels' options={{title: 'Hotels'}} component={ViewHotels} />
 
         {/* Components */}
         <Stack.Screen name='Button' component={ButtonComponent} />
