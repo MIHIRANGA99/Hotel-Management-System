@@ -18,7 +18,7 @@ const FoodCard = ({FoodName, Price, photoURL, onEdit, onDelete, extraStyles}) =>
        
         </View>
         <View style = {{flex: 2, justifyContent: 'flex-start', width: "100%", marginTop: 12, paddingHorizontal: 12}}>
-            <Text>{Price} Price </Text>
+            <Text>Price:{Price}.00/=  </Text>
     
         </View>
         <View style = {{flex: 1, flexDirection: 'row', justifyContent: 'space-between', width: "100%"}}>
