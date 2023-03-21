@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Modal, Text, View } from 'react-native'
+import { View } from 'react-native'
 import AlertPop from '../../Components/AlertPop/AlertPop'
 import Button from '../../Components/Button/Button'
 import TextField from '../../Components/TextField/TextField'
@@ -27,7 +27,7 @@ const AddHotel = () => {
         setURL("");
     }
 
-    const addRoom = () => {
+    const addHotel = () => {
         data = {
             "hotelName": name,
             "location": location,
@@ -44,15 +44,15 @@ const AddHotel = () => {
   return (
     <View style = {mainStyles.centerPage}>
         <View style = {{width: '90%'}}>
-            <TextField onChange={(text) => setName(text)} placeholder='Hotel Name' />
-            <TextField onChange={(text) => setLocation(text)} placeholder='Location' />
-            <TextField onChange={(text) => setRooms(text)} keyboardType='decimal-pad' placeholder='Bed Rooms' />
-            <TextField onChange={(text) => setDesc(text)} placeholder='Description' />
-            <TextField onChange={(text) => setAmount(text)} keyboardType='decimal-pad' placeholder='Amount per Day' />
-            <TextField onChange={(text) => setURL(text)} placeholder='Photo URL' />
+            <TextField value={name} onChange={(text) => setName(text)} placeholder='Hotel Name' />
+            <TextField value={location} onChange={(text) => setLocation(text)} placeholder='Location' />
+            <TextField value={rooms} onChange={(text) => setRooms(text)} keyboardType='decimal-pad' placeholder='Bed Rooms' />
+            <TextField value={description} onChange={(text) => setDesc(text)} placeholder='Description' />
+            <TextField value={amount} onChange={(text) => setAmount(text)} keyboardType='decimal-pad' placeholder='Amount per Day' />
+            <TextField value={url} onChange={(text) => setURL(text)} placeholder='Photo URL' />
 
             <View style = {{alignItems: 'center'}}>
-                <Button title='Submit' onClick={() => addRoom()} />
+                <Button title='Submit' onClick={() => addHotel()} />
             </View>
         </View>
         <AlertPop show={popup} setShow={setPopup} message='Hotel Added Successfully!'  />
