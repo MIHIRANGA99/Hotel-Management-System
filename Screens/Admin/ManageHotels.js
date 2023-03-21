@@ -8,7 +8,7 @@ import {
   getDataFromCollection,
 } from "../../firebase/utils";
 
-const ManageHotels = () => {
+const ManageHotels = ({navigation}) => {
   const [hotels, setHotels] = useState([]);
   const [showPopup, setShowPopUp] = useState(false);
   const [selectedHotel, setSelectedHotel] = useState({});
@@ -37,6 +37,9 @@ const ManageHotels = () => {
           onDelete={() => {
             setShowPopUp(true);
             setSelectedHotel(hotel);
+          }}
+          onEdit={() => {
+            navigation.navigate("EditHotel", {hotelID: hotel.id});
           }}
         />
       ))}

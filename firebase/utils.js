@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth"
-import { addDoc, collection, deleteDoc, doc, getDocs, query, setDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, setDoc } from "firebase/firestore";
 import { auth, database } from "./config"
 
 export const registerUser = (email, password, username, onSuccess) => {
@@ -53,6 +53,17 @@ export const getDataFromCollection = async (collectionName) => {
     });
 
     return dataList;
+}
+
+export const getSingleDataFromCollection = async (collectionName, docId) => {
+    const ref = doc(database, collectionName, docId);
+
+    const document = await getDoc(ref);
+     if (document.exists()) {
+        return document.data()
+     } else {
+        return {error: "Document not found"}
+     }
 }
 
 export const updateFromCollection = async (collectionName, updatedData, docId, onSuccess, onError) => {

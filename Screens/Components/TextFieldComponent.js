@@ -24,6 +24,7 @@ const TextFieldComponent = () => {
         <TextField
           placeholder="Sample normal Placeholder"
           onChange={(text) => console.log(text)}
+          value = 'sample'
         />
       </View>
     </View>
