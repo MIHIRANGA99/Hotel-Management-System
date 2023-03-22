@@ -30,6 +30,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen options={{headerShown: false}} name='Welcome' component={Welcome} />
         <Stack.Screen
           name="ViewHotels"
           options={{ title: "Hotels" }}
@@ -45,7 +46,6 @@ export default function App() {
           options={{ title: "Manage Bookings" }}
           component={ManageBookings}
         />
-        <Stack.Screen options={{headerShown: false}} name='Welcome' component={Welcome} />
         <Stack.Screen name='Register' component={Register} />
         <Stack.Screen name='Login' component={Login} />
         <Stack.Screen name='Home' component={Home} />
