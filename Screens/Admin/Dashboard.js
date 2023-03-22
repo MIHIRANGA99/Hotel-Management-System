@@ -14,7 +14,9 @@ const Dashboard = ({navigation}) => {
             <Button onClick={() => navigation.navigate("AddHotel")} extraStyles={{marginTop: 12}} title='Add New Hotel' />
             <Button onClick={() => navigation.navigate("AddNewFood")} extraStyles={{marginTop: 12}} title='Add New Food Menu' />
 
+            <Button onClick={() => navigation.navigate("ManageAllFoodsMenu")} extraStyles={{marginTop: 12}} title='All Food Menu' />
             
+
             <Button extraStyles={{marginTop: 12}} title='Manage Food' />
         </View>
     </View>
