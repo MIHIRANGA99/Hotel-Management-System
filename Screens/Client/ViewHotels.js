@@ -3,7 +3,7 @@ import { ScrollView, TouchableOpacity } from "react-native";
 import HotelCard from "../../Components/HotelCard/HotelCard";
 import { getDataFromCollection } from "../../firebase/utils";
 
-const ViewHotels = () => {
+const ViewHotels = ({navigation}) => {
   const [hotels, setHotels] = useState([]);
 
   useEffect(() => {
@@ -20,8 +20,9 @@ const ViewHotels = () => {
     <ScrollView>
       {hotels.map((hotel) => (
         <TouchableOpacity
-          onPress={() => console.log(hotel.hotelName)}
-          key={hotel.id}
+          onPress={() =>
+            navigation.navigate("BookHotel", { hotelID: hotel.id })
+          } key={hotel.id}
         >
           <HotelCard
             key={hotel.id}
