@@ -14,6 +14,13 @@ import AlertPopComponent from './Screens/Components/AlertPopComponent';
 import ManageHotels from './Screens/Admin/ManageHotels';
 import EditHotel from './Screens/Admin/EditHotel';
 
+
+
+//minosh
+import AddNewFood from './Screens/Admin/AddNewFood';
+import ManageAllFoodsMenu from './Screens/Admin/ManageAllFoodsMenu';
+
+
 export default function App() {
 
   const Stack = createNativeStackNavigator();
@@ -29,6 +36,10 @@ export default function App() {
         <Stack.Screen name='AddHotel' options={{title: 'Add New Hotel'}} component={AddHotel} />
         <Stack.Screen name='ManageHotels' options={{title: 'Manage Hotels'}} component={ManageHotels} />
         <Stack.Screen name='EditHotel' options={{title: 'Edit Hotel'}} component={EditHotel} />
+        <Stack.Screen name='AddNewFood' options={{title: 'Add New Food Menu'}} component={AddNewFood} />
+        <Stack.Screen name='ManageAllFoodsMenu' options={{title: 'All Food Menu'}} component={ManageAllFoodsMenu} />
+
+        
 
         {/* Components */}
         <Stack.Screen name='Button' component={ButtonComponent} />
