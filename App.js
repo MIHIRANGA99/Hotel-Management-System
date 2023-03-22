@@ -17,40 +17,19 @@ import ViewHotels from "./Screens/Client/ViewHotels";
 import BookHotel from "./Screens/Client/BookHotel";
 import ManageBookings from "./Screens/Client/ManageBookings";
 
+
+
+//minosh
+import AddNewFood from './Screens/Admin/AddNewFood';
+import ManageAllFoodsMenu from './Screens/Admin/ManageAllFoodsMenu';
+
+
 export default function App() {
   const Stack = createNativeStackNavigator();
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
-          options={{ headerShown: false }}
-          name="Welcome"
-          component={Welcome}
-        />
-        <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen
-          name="AdminDB"
-          options={{ title: "Admin Dashboard" }}
-          component={Dashboard}
-        />
-        <Stack.Screen
-          name="AddHotel"
-          options={{ title: "Add New Hotel" }}
-          component={AddHotel}
-        />
-        <Stack.Screen
-          name="ManageHotels"
-          options={{ title: "Manage Hotels" }}
-          component={ManageHotels}
-        />
-        <Stack.Screen
-          name="EditHotel"
-          options={{ title: "Edit Hotel" }}
-          component={EditHotel}
-        />
         <Stack.Screen
           name="ViewHotels"
           options={{ title: "Hotels" }}
@@ -66,6 +45,16 @@ export default function App() {
           options={{ title: "Manage Bookings" }}
           component={ManageBookings}
         />
+        <Stack.Screen options={{headerShown: false}} name='Welcome' component={Welcome} />
+        <Stack.Screen name='Register' component={Register} />
+        <Stack.Screen name='Login' component={Login} />
+        <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='AdminDB' options={{title: 'Admin Dashboard'}} component={Dashboard} />
+        <Stack.Screen name='AddHotel' options={{title: 'Add New Hotel'}} component={AddHotel} />
+        <Stack.Screen name='ManageHotels' options={{title: 'Manage Hotels'}} component={ManageHotels} />
+        <Stack.Screen name='EditHotel' options={{title: 'Edit Hotel'}} component={EditHotel} />
+        <Stack.Screen name='AddNewFood' options={{title: 'Add New Food Menu'}} component={AddNewFood} />
+        <Stack.Screen name='ManageAllFoodsMenu' options={{title: 'All Food Menu'}} component={ManageAllFoodsMenu} />
 
         {/* Components */}
         <Stack.Screen name="Button" component={ButtonComponent} />
