@@ -16,6 +16,7 @@ const AddNewFood = () => {
     const [description, setDesc] = useState("");
     const [Price, setPrice] = useState();
     const [url, setURL] = useState("");
+
     const [popup, setPopup] = useState(false);
     const [errors, setErrors] = useState(false);
 
