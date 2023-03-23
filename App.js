@@ -19,7 +19,7 @@ import ManageBookings from "./Screens/Client/ManageBookings";
 import FoodSplashScreen from './Screens/Admin/FoodSplashScreen';
 import ManageAllFoodsMenu from './Screens/Admin/ManageAllFoodsMenu';
 import AddNewFood from './Screens/Admin/AddNewFood';
-
+import EditBooking from "./Screens/Client/EditBooking";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -53,6 +53,11 @@ export default function App() {
         <Stack.Screen name='AddNewFood' options={{title: 'Add New Food Menu'}} component={AddNewFood} />
         <Stack.Screen name='FoodSplashScreen' options={{title: 'Food Splash Screen'}} component={FoodSplashScreen} />
         <Stack.Screen name='ManageAllFoodsMenu' options={{title: 'All Food Menu'}} component={ManageAllFoodsMenu} />
+        <Stack.Screen
+          name="EditBookings"
+          options={{ title: "Edit Bookings" }}
+          component={EditBooking}
+        />
 
         {/* Components */}
         <Stack.Screen name="Button" component={ButtonComponent} />
