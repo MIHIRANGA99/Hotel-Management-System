@@ -44,7 +44,7 @@ const ManageAllFoodsMenu = ({navigation}) => {
                 setselectedFood(foods);
               }}
               onEdit={() => {
-                navigation.navigate("EditHotel", {foodID: foods.id});
+                navigation.navigate("EditFoodMenu", {FoodID: foods.id});
               }}
             />
           ))}
@@ -63,7 +63,7 @@ const ManageAllFoodsMenu = ({navigation}) => {
                   <Button
                     onClick={() => {
                       deleteFromCollection(
-                        "Hotels",
+                        "Foods",
                         selectedFood.id,
                         () => {readHotels(); setShowPopUp(false);},
                         () => console.error("Error occurd")
