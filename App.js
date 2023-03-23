@@ -16,12 +16,9 @@ import EditHotel from "./Screens/Admin/EditHotel";
 import ViewHotels from "./Screens/Client/ViewHotels";
 import BookHotel from "./Screens/Client/BookHotel";
 import ManageBookings from "./Screens/Client/ManageBookings";
-
-
-
-//minosh
-import AddNewFood from './Screens/Admin/AddNewFood';
+import FoodSplashScreen from './Screens/Admin/FoodSplashScreen';
 import ManageAllFoodsMenu from './Screens/Admin/ManageAllFoodsMenu';
+import AddNewFood from './Screens/Admin/AddNewFood';
 
 
 export default function App() {
@@ -54,6 +51,7 @@ export default function App() {
         <Stack.Screen name='ManageHotels' options={{title: 'Manage Hotels'}} component={ManageHotels} />
         <Stack.Screen name='EditHotel' options={{title: 'Edit Hotel'}} component={EditHotel} />
         <Stack.Screen name='AddNewFood' options={{title: 'Add New Food Menu'}} component={AddNewFood} />
+        <Stack.Screen name='FoodSplashScreen' options={{title: 'Food Splash Screen'}} component={FoodSplashScreen} />
         <Stack.Screen name='ManageAllFoodsMenu' options={{title: 'All Food Menu'}} component={ManageAllFoodsMenu} />
 
         {/* Components */}
