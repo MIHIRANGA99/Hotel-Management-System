@@ -31,7 +31,7 @@ const AddNewFood = () => {
         setURL("");
     }
 
-    const sizes = ['Full', 'Half', 'Regular'];
+    const sizes = ['chicken ', 'fish', 'cheese'];
 
 
         // Function to add a new food item to the Firebase database
@@ -57,7 +57,7 @@ const AddNewFood = () => {
                 <TextField value={description} onChange={(text) => setDesc(text)} placeholder='Description' />
                 <TextField value={Price} onChange={(text) => setPrice(text)} keyboardType='decimal-pad' placeholder='Food Price' />
                 <TextField value={url} onChange={(text) => setURL(text)} placeholder='Photo URL' />
-       <Text style={{marginVertical: 8, fontSize: 16, fontWeight: '500', textAlign: 'center'}}>Select Meal Size</Text>
+       <Text style={{marginVertical: 8, fontSize: 16, fontWeight: '500', textAlign: 'center'}}>Select the food type </Text>
           <View>
             {sizes.map((size, index) => (
               <TouchableOpacity onPress={() => setSelected(index)} key={index}>
