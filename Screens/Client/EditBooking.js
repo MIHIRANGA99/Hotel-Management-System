@@ -45,6 +45,7 @@ const EditBooking = ({ navigation, route }) => {
       data,
       route.params.bookingID,
       () => alert("Booking Details Updated Sucessfully!"),
+      navigation.navigate("ManageBookings"),
       () => alert("Cannot Update! Try Again")
     );
   };
