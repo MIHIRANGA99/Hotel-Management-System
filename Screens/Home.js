@@ -32,7 +32,11 @@ const Home = ({ navigation }) => {
           extraStyles={{ marginTop: 12 }}
           title="Book a Hotel"
         />
-        <Button extraStyles={{ marginTop: 12 }} title="Order Food" />
+        <Button 
+          onClick={() => navigation.navigate("Food Items")} 
+          extraStyles={{marginTop: 12}} 
+          title='All  Menu' 
+        />
         <Button
           onClick={() => navigation.navigate("ManageBookings")}
           extraStyles={{ marginTop: 12 }}
