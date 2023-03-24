@@ -37,7 +37,8 @@ const BookHotel = ({ navigation, route }) => {
       data,
       () => alert("Hotel Room Booked Sucessfully!"),
       navigation.navigate("ViewHotels"),
-      () => alert("Cannot Book! Try Again")
+      () => alert("Cannot Book! Try Again"),
+      navigation.navigate("ViewHotels"),
     );
   };
 
