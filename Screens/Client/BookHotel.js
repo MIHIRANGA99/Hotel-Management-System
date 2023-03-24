@@ -36,6 +36,7 @@ const BookHotel = ({ navigation, route }) => {
       "Bookings",
       data,
       () => alert("Hotel Room Booked Sucessfully!"),
+      navigation.navigate("ViewHotels"),
       () => alert("Cannot Book! Try Again")
     );
   };
@@ -134,7 +135,7 @@ const BookHotel = ({ navigation, route }) => {
               <Text>CheckIn Date: {checkIn.toDateString()}</Text>
               <Text>CheckOut Date: {checkOut.toDateString()}</Text>
               <Text>
-                Total Price: LKR{" "}
+                Total Price: LKR
                 {new Date(checkOut - checkIn).getDate() * hotel.amount}.00
               </Text>
             </View>
