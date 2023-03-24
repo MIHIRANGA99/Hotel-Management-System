@@ -31,7 +31,8 @@ const AddNewFood = () => {
         setURL("");
     }
 
-    
+        // Function to add a new food item to the Firebase database
+
     const addFoodItem = () => {
         data = {
             "FoodName": FoodName,
@@ -39,6 +40,8 @@ const AddNewFood = () => {
             "Price": Price,
             "url": url,
         }
+
+       // Call the createData function from firebase/utils to add the data to the "Foods" collection in Firebase
 
         createData("Foods", data, () => {setPopup(true); AddFood();}, () => {setErrors(true); AddFood()});
     }
