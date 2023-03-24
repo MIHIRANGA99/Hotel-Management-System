@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import TextField from "../Components/TextField/TextField";
 import Button from "../Components/Button/Button";
 import { registerUser } from "../firebase/utils";
@@ -26,7 +26,22 @@ const Register = ({ navigation }) => {
       <View
         style={{
           flex: 1,
+          width: "100%",
           justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Image
+          style={{ width: 300, height: "100%" }}
+          source={{
+            uri: "https://firebasestorage.googleapis.com/v0/b/hotel-management-native.appspot.com/o/Indigo%20Hotels.png?alt=media&token=640525c2-6948-4d03-a18b-8988e25059a4",
+          }}
+        />
+      </View>
+      <View
+        style={{
+          flex: 2,
+          justifyContent: "flex-start",
           width: "90%",
           position: "relative",
         }}
@@ -69,7 +84,7 @@ const Register = ({ navigation }) => {
           }}
         >
           <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-            <Text style = {{color: "#341B54"}}>Already registered? Login</Text>
+            <Text style={{ color: "#341B54" }}>Already registered? Login</Text>
           </TouchableOpacity>
         </View>
       </View>
