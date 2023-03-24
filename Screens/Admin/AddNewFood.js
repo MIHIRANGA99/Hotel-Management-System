@@ -11,6 +11,28 @@ import mainStyles from '../../styles/mainStyles'
 
 const AddNewFood = () => {
 
+        // Set up state variables to hold form data and error/popup messages
+
+
+    const [FoodName, setFoodName] = useState("");
+    const [description, setDesc] = useState("");
+    const [Price, setPrice] = useState();
+    const [url, setURL] = useState("");
+
+    const [popup, setPopup] = useState(false);
+    const [errors, setErrors] = useState(false);
+
+    // Function to clear form data when the user submits the form
+
+    const AddFood = () => {
+        setFoodName("");
+        setDesc("");
+        setPrice();
+        setURL("");
+    }
+
+        // Function to add a new food item to the Firebase database
+
 
     return (
         <View style = {mainStyles.centerPage}>
