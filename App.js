@@ -23,6 +23,7 @@ import EditFoodMenu from './Screens/Admin/EditFoodMenu';
 import EditBooking from "./Screens/Client/EditBooking";
 import FoodItemDisplay from './Screens/Client/FoodItemDisplay';
 import Cart from './Screens/Client/Cart';
+import EditCart from "./Screens/Client/EditCart";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -59,6 +60,7 @@ export default function App() {
         <Stack.Screen name='EditFoodMenu' options={{title: 'Edit Food'}} component={EditFoodMenu} />
         <Stack.Screen name="Food Items" component={FoodItemDisplay} />
         <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name="Edit Cart" component={EditCart} />
         <Stack.Screen
           name="EditBookings"
           options={{ title: "Edit Bookings" }}
