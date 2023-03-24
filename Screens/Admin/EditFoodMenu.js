@@ -10,7 +10,50 @@ import mainStyles from "../../styles/mainStyles";
  
 
 const EditFoodMenu = ({navigation, route}) => {
+    // Define state variables for form input and popups
 
+    const [FoodName, setFoodName] = useState("");
+    const [description, setDesc] = useState("");
+    const [Price, setPrice] = useState();
+    const [url, setURL] = useState("");
+    const [popup, setPopup] = useState(false);
+      const [errors, setErrors] = useState(false);
+
+          // Load food data for the selected item on mount
+
+      useEffect(() => {
+        getSingleDataFromCollection("Foods", route.params.FoodID)
+            .then((res) => {
+                setFoodName(res.FoodName);
+                setDesc(res.description);
+                setPrice(res.Price);
+                setURL(res.url)
+            })
+    }, [])
+
+
+    const clearFields = () => {
+        setFoodName("");
+        setDesc("");
+        setPrice();
+        setURL("");
+    }
+
+        // Update the food item in the database and navigate to the admin dashboard on success
+
+    const updateFoods = () => {
+        data = {
+            "FoodName": FoodName,
+            "description": description,
+            "Price": Price,
+            "url": url,
+
+        }
+
+        updateFromCollection("Foods", data, route.params.FoodID, () => {setPopup(true); navigation.navigate("AdminDB")}, () => setErrors(true))
+    }
+
+        // Render the form and popups
 
     return (
         <View style={mainStyles.centerPage}>
