@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image, Modal, ScrollView, Text, View } from "react-native";
+import { Modal, ScrollView, Text, View } from "react-native";
 import Button from "../../Components/Button/Button";
 import {
   deleteFromCollection,
@@ -66,6 +66,7 @@ const ManageBookings = ({ navigation, route }) => {
                   navigation.navigate("EditBookings", {
                     hotelID: booking.hotelID,
                     bookingID: booking.id,
+                    persons: booking.personCount
                   })
                 }
                 extraStyles={{ marginTop: 8 }}
