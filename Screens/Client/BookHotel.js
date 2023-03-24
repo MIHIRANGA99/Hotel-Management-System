@@ -9,7 +9,6 @@ import {
 } from "../../firebase/utils";
 
 const BookHotel = ({ navigation, route }) => {
-
   const [hotel, setHotel] = useState({});
   const [showCheckIn, setShowCheckIn] = useState(false);
   const [showCheckOut, setShowCheckOut] = useState(false);
@@ -38,8 +37,10 @@ const BookHotel = ({ navigation, route }) => {
     createData(
       "Bookings",
       data,
-      () => console.log("Booked"),
-      () => console.log("Cannot Book")
+      () => alert("Hotel Room Booked Sucessfully!"),
+      navigation.navigate("ViewHotels"),
+      () => alert("Cannot Book! Try Again"),
+      navigation.navigate("ViewHotels"),
     );
   };
 
@@ -145,7 +146,7 @@ const BookHotel = ({ navigation, route }) => {
               <Text>CheckIn Date: {checkIn.toDateString()}</Text>
               <Text>CheckOut Date: {checkOut.toDateString()}</Text>
               <Text>
-                Total Price: LKR{" "}
+                Total Price: LKR
                 {new Date(checkOut - checkIn).getDate() * hotel.amount}.00
               </Text>
             </View>
