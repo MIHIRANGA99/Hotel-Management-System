@@ -47,13 +47,6 @@ const Dashboard = ({ navigation }) => {
         />
 
         <Button extraStyles={{ marginTop: 12 }} title="Manage Food" />
-
-        <Button 
-          onClick={() => navigation.navigate("Food Items")} 
-          extraStyles={{marginTop: 12}} 
-          title='All  Menu' 
-        />
-        
       </View>
     </View>
   );
