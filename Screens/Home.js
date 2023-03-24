@@ -13,7 +13,7 @@ const Home = ({ navigation }) => {
 
   useEffect(() => {
     if (getCurrentUser().email === "runkavisha@gmail.com") {
-      navigation.navigate("AdminDB");
+      navigation.navigate("AdminSS");
     }
   }, [user]);
 
@@ -45,7 +45,7 @@ const Home = ({ navigation }) => {
       
       <View style={{ display: "flex", flex: 1, justifyContent: "flex-end" }}>
         <Button
-          onClick={() => navigation.navigate("ViewHotels")}
+          onClick={() => navigation.navigate("HotelSS")}
           extraStyles={{ marginTop: 12 }}
           title="Book a Hotel"
         />
@@ -55,7 +55,7 @@ const Home = ({ navigation }) => {
           title='All  Menu' 
         />
         <Button
-          onClick={() => navigation.navigate("ManageBookings")}
+          onClick={() => navigation.navigate("BookingsSS")}
           extraStyles={{ marginTop: 12 }}
           title="Manage Bookings"
         />

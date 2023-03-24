@@ -24,6 +24,9 @@ import EditBooking from "./Screens/Client/EditBooking";
 import FoodItemDisplay from './Screens/Client/FoodItemDisplay';
 import Cart from './Screens/Client/Cart';
 import EditCart from "./Screens/Client/EditCart";
+import AdminSS from "./Screens/SplashScreens/AdminSS";
+import HotelSS from "./Screens/SplashScreens/HotelSS";
+import BookingsSS from "./Screens/SplashScreens/BookingsSS";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -66,6 +69,11 @@ export default function App() {
           options={{ title: "Edit Bookings" }}
           component={EditBooking}
         />
+
+        {/* Splash Screens */}
+        <Stack.Screen name="AdminSS" component={AdminSS} />
+        <Stack.Screen name="HotelSS" component={HotelSS} />
+        <Stack.Screen name="BookingsSS" component={BookingsSS} />
 
         {/* Components */}
         <Stack.Screen name="Button" component={ButtonComponent} />
