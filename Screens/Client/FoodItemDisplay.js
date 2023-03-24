@@ -2,6 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, Button } from 'react-native';
 
 const FoodItemDisplay = ({ navigation }) => {
+    const [foodItems, setFoodItems] = useState([]);
+
+    useEffect(() => {
+        getDataFromCollection("Foods")
+            .then((res) => setFoodItems(res))
+            .catch((e) => console.error(e))
+    }, []);
+
     return (
         <View>
             {foodItems.map((foodItem) => (
