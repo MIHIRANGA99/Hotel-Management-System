@@ -7,7 +7,7 @@ import {
   getDataFromCollection,
 } from "../../firebase/utils";
 
-const ManageBookings = ({ navigation }) => {
+const ManageBookings = ({ navigation, route }) => {
   const [hotels, setHotels] = useState([]);
   const [showPopup, setShowPopUp] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState({});
