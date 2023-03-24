@@ -56,7 +56,7 @@ const Cart = ({navigation}) => {
           <Text style={{ fontSize: 18, fontWeight: "600" }}>
             Quantity: {cartItem.quantity}
           </Text>
-          <Button title="Edit" onClick={() => navigation.navigate("Edit Cart", {foodID: cartItem.id})} />
+          <Button title="Edit" onClick={() => navigation.navigate("Edit Cart", {foodID: cartItem.id, size: cartItem.size})} />
           <Button extraStyles={{backgroundColor: '#730000', marginTop: 8}} title="Remove" onClick={() => handleDelete(cartItem.id)} />
         </View>
       ))}
