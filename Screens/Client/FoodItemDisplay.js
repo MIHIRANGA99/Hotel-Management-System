@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, Button } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
+import Button from '../../Components/Button/Button';
+import TextField from '../../Components/TextField/TextField';
 import { createData, getCurrentUser, getDataFromCollection } from '../../firebase/utils';
 
 const FoodItemDisplay = ({ navigation }) => {
+    const [quantity, setQuantity] = useState(0);
     const [foodItems, setFoodItems] = useState([]);
 
     useEffect(() => {
@@ -14,28 +17,31 @@ const FoodItemDisplay = ({ navigation }) => {
     const handleAddToCart =(foodItem)=> {
         const data = {
             "name": foodItem.FoodName,
-            "price": foodItem.Price,
+            "price": foodItem.Price * quantity,
+            "quantity": quantity,
             "url":foodItem.url,
             "userID": getCurrentUser().uid
         }
-        createData("Cart1",data,()=>console.log("added to cart"),()=>console.error('Cannot Add'));
+        createData("Cart",data,()=>console.log("added to cart"),()=>console.error('Cannot Add'));
         navigation.navigate('Cart');
     };
 
     return (
-        <View>
+        <ScrollView style={{padding: 12}}>
+            <Button title='View My Cart' onClick={() => navigation.navigate('Cart')} extraStyles={{marginTop: 0}} />
             {foodItems.map((foodItem) => (
-                <View key={foodItem.key}>
+                <View style={{backgroundColor: '#E7E7E7', padding: 8, borderRadius: 12, marginVertical: 8}} key={foodItem.id}>
                     <Image source={{ uri:foodItem.url }} style={{ width: 400, height: 200 }} />
 
                     <Text>{foodItem.FoodName}</Text>
                     <Text>{foodItem.description}</Text>
                     <Text>{foodItem.Price}</Text>
                     
-                    <Button title="Add to Cart" onPress={()=>handleAddToCart(foodItem)} />
+                    <TextField keyboardType='decimal-pad' extraStyles={{marginBottom: 0, backgroundColor: '#c0aed1'}} placeholder='Enter Quantity' onChange={(text) => setQuantity(text)} />
+                    <Button title="Add to Cart" onClick={()=>handleAddToCart(foodItem)} />
                 </View>
             ))}
-        </View>
+        </ScrollView>
     );
 };
 
