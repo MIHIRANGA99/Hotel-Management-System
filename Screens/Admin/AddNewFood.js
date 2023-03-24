@@ -11,6 +11,8 @@ import mainStyles from '../../styles/mainStyles'
 
 const AddNewFood = () => {
 
+        // Set up state variables to hold form data and error/popup messages
+
 
     const [FoodName, setFoodName] = useState("");
     const [description, setDesc] = useState("");
@@ -20,6 +22,7 @@ const AddNewFood = () => {
     const [popup, setPopup] = useState(false);
     const [errors, setErrors] = useState(false);
 
+    // Function to clear form data when the user submits the form
 
     const AddFood = () => {
         setFoodName("");
