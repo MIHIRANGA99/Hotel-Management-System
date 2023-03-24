@@ -19,9 +19,12 @@ const ManageAllFoodsMenu = ({navigation}) => {
 
   
     useEffect(() => {
+          // Fetch all the food items from the "Foods" collection on mount
+
         readHotels();
       }, []);
-    
+      // Function to fetch all the food items from the "Foods" collection
+
       const readHotels = () => {
         getDataFromCollection("Foods")
           .then((res) => setFOODS(res))
