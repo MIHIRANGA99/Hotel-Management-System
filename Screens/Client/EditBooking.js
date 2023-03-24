@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image, Text, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import Button from "../../Components/Button/Button";
 import {
   getCurrentUser,
@@ -16,6 +16,7 @@ const EditBooking = ({ navigation, route }) => {
   const [checkIn, setCheckIn] = useState(new Date());
   const [checkOut, setCheckOut] = useState(new Date());
   const [available, setAvailable] = useState(false);
+  const [selected, setSelected] = useState(route.params.persons);
 
   useEffect(() => {
     getSingleDataFromCollection("Hotels", route.params.hotelID)
@@ -38,6 +39,7 @@ const EditBooking = ({ navigation, route }) => {
       dayCount: new Date(checkOut - checkIn).getDate(),
       price: new Date(checkOut - checkIn).getDate() * hotel.amount,
       hotelID: route.params.hotelID,
+      personCount: selected
     };
 
     updateFromCollection(
@@ -52,6 +54,8 @@ const EditBooking = ({ navigation, route }) => {
   const checkAvailability = () => {
     setAvailable(true);
   };
+
+  const personCount = ['2 Person or Lower', '2 Person to 4 Person', '4 Person or Higher'];
 
   return (
     <ScrollView>
@@ -70,6 +74,12 @@ const EditBooking = ({ navigation, route }) => {
             Description
           </Text>
           <Text style={{ fontSize: 16 }}>{hotel.description}</Text>
+        </View>
+        <View style={{marginVertical: 12}}>
+          <Text style={{marginVertical: 8, fontSize: 16, fontWeight: '500', textAlign: 'center'}}>Select Person Count</Text>
+          {personCount.map((person, index) => (
+            <TouchableOpacity onPress={() => setSelected(person)} key={index} ><Text style={{textDecorationLine: selected === person? 'underline': 'none'}}>{person}</Text></TouchableOpacity>
+          ))}
         </View>
         <View
           style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}

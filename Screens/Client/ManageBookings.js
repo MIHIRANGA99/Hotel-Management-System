@@ -66,6 +66,7 @@ const ManageBookings = ({ navigation, route }) => {
                   navigation.navigate("EditBookings", {
                     hotelID: booking.hotelID,
                     bookingID: booking.id,
+                    persons: booking.personCount
                   })
                 }
                 extraStyles={{ marginTop: 8 }}
