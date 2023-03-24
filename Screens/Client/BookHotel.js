@@ -9,7 +9,6 @@ import {
 } from "../../firebase/utils";
 
 const BookHotel = ({ navigation, route }) => {
-
   const [hotel, setHotel] = useState({});
   const [showCheckIn, setShowCheckIn] = useState(false);
   const [showCheckOut, setShowCheckOut] = useState(false);
@@ -36,8 +35,8 @@ const BookHotel = ({ navigation, route }) => {
     createData(
       "Bookings",
       data,
-      () => console.log("Booked"),
-      () => console.log("Cannot Book")
+      () => alert("Hotel Room Booked Sucessfully!"),
+      () => alert("Cannot Book! Try Again")
     );
   };
 
