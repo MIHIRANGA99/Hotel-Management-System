@@ -80,7 +80,8 @@ export const deleteFromCollection = async (collectionName, docId, onSuccess, onE
     await deleteDoc(doc(database, collectionName, docId))
         .then((res) => {
             onSuccess();
-            alert("Booking Deleted Sucessfully!")
+            alert("Booking Deleted Sucessfully!");
+            navigation.navigate("ManageBookings");
         })
         .catch((e) => {
             onError();
