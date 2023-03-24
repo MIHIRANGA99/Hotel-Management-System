@@ -11,6 +11,8 @@ import mainStyles from '../../styles/mainStyles'
 
 const AddNewFood = () => {
 
+        // Set up state variables to hold form data and error/popup messages
+
 
     const [FoodName, setFoodName] = useState("");
     const [description, setDesc] = useState("");
@@ -20,6 +22,7 @@ const AddNewFood = () => {
     const [popup, setPopup] = useState(false);
     const [errors, setErrors] = useState(false);
 
+    // Function to clear form data when the user submits the form
 
     const AddFood = () => {
         setFoodName("");
@@ -28,7 +31,8 @@ const AddNewFood = () => {
         setURL("");
     }
 
-    
+        // Function to add a new food item to the Firebase database
+
     const addFoodItem = () => {
         data = {
             "FoodName": FoodName,
@@ -36,6 +40,8 @@ const AddNewFood = () => {
             "Price": Price,
             "url": url,
         }
+
+       // Call the createData function from firebase/utils to add the data to the "Foods" collection in Firebase
 
         createData("Foods", data, () => {setPopup(true); AddFood();}, () => {setErrors(true); AddFood()});
     }
