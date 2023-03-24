@@ -41,7 +41,7 @@ const Dashboard = ({ navigation }) => {
         />
 
         <Button
-          onClick={() => navigation.navigate("ManageAllFoodsMenu")}
+          onClick={() => navigation.navigate("FoodSplashScreen")}
           extraStyles={{ marginTop: 12 }}
           title="All Food Menu"
         />
