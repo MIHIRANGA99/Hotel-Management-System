@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, Button } from 'react-native';
+import { createData, getCurrentUser, getDataFromCollection } from '../../firebase/utils';
 
 const FoodItemDisplay = ({ navigation }) => {
     const [foodItems, setFoodItems] = useState([]);
@@ -9,6 +10,17 @@ const FoodItemDisplay = ({ navigation }) => {
             .then((res) => setFoodItems(res))
             .catch((e) => console.error(e))
     }, []);
+
+    const handleAddToCart =(foodItem)=> {
+        const data = {
+            "name": foodItem.FoodName,
+            "price": foodItem.Price,
+            "url":foodItem.url,
+            "userID": getCurrentUser().uid
+        }
+        createData("Cart1",data,()=>console.log("added to cart"),()=>console.error('Cannot Add'));
+        navigation.navigate('Cart');
+    };
 
     return (
         <View>
