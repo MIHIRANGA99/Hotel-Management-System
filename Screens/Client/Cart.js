@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Image, ScrollView } from "react-native";
 import Button from "../../Components/Button/Button";
+import AlertPop from "../../Components/AlertPop/AlertPop";
 import {
   getDataFromCollection,
   deleteFromCollection,
@@ -27,9 +28,10 @@ const Cart = ({navigation}) => {
       docId,
       () => {
         readCart();
-        alert("Successfully Removed");
+        setPopup(true);
       },
       (error) => {
+        setErrors(true);
         console.error(error);
       }
     );
@@ -56,10 +58,24 @@ const Cart = ({navigation}) => {
           <Text style={{ fontSize: 18, fontWeight: "600" }}>
             Quantity: {cartItem.quantity}
           </Text>
+          <Text style={{ fontSize: 18, fontWeight: "600" }}>
+            Meal Size: {cartItem.size}
+          </Text>
           <Button title="Edit" onClick={() => navigation.navigate("Edit Cart", {foodID: cartItem.id, size: cartItem.size})} />
           <Button extraStyles={{backgroundColor: '#730000', marginTop: 8}} title="Remove" onClick={() => handleDelete(cartItem.id)} />
         </View>
       ))}
+      <AlertPop
+        show={popup}
+        setShow={setPopup}
+        message="Food Item Deleted Successfully!"
+      />
+      <AlertPop
+        show={errors}
+        error
+        setShow={setErrors}
+        message="Error occured when deleting Food item!"
+      />
     </ScrollView>
   );
 };

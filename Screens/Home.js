@@ -50,12 +50,12 @@ const Home = ({ navigation }) => {
           title="Book Hotel"
         />
         <Button 
-          onClick={() => navigation.navigate("Food Items")} 
+          onClick={() => navigation.navigate("OrderSS")} 
           extraStyles={{marginTop: 12}} 
           title='All Menu' 
         />
         <Button
-          onClick={() => navigation.navigate("BookingsSS")}
+          onClick={() => navigation.navigate("ManageBookings")}
           extraStyles={{ marginTop: 12 }}
           title="Manage Bookings"
         />

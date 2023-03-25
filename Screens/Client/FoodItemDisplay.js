@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import Button from "../../Components/Button/Button";
+import AlertPop from "../../Components/AlertPop/AlertPop";
 import TextField from "../../Components/TextField/TextField";
 import {
   createData,
@@ -12,6 +13,8 @@ const FoodItemDisplay = ({ navigation }) => {
   const [quantity, setQuantity] = useState(0);
   const [foodItems, setFoodItems] = useState([]);
   const [selected, setSelected] = useState(-1);
+  const [popup, setPopup] = useState(false);
+  const [errors, setErrors] = useState(false);
 
   useEffect(() => {
     getDataFromCollection("Foods")
@@ -31,10 +34,11 @@ const FoodItemDisplay = ({ navigation }) => {
     createData(
       "Cart",
       data,
-      () => console.log("added to cart"),
-      () => console.error("Cannot Add")
+      () => {setPopup(true); setTimeout(() => {
+        navigation.navigate("Cart");
+      }, 1000);},
+      () => setErrors(true)
     );
-    navigation.navigate("Cart");
   };
 
   const sizes = ['Full', 'Half', 'Regular'];
@@ -93,6 +97,17 @@ const FoodItemDisplay = ({ navigation }) => {
           />
         </View>
       ))}
+      <AlertPop
+        show={popup}
+        setShow={setPopup}
+        message="Food Item Added to the Cart Successfully!"
+      />
+      <AlertPop
+        show={errors}
+        error
+        setShow={setErrors}
+        message="Error occured when Adding The Food Item to Cart!"
+      />
     </ScrollView>
   );
 };
