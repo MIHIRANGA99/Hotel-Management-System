@@ -2,11 +2,11 @@ import AnimatedLottieView from 'lottie-react-native'
 import React, { useEffect } from 'react'
 import { View } from 'react-native'
 
-const BookingsSS = ({navigation}) => {
+const OrderSS = ({navigation}) => {
 
     useEffect(() => {
         setTimeout(() => {
-            navigation.navigate("ManageBookings");
+            navigation.navigate("Food Items");
         }, 3000);
     }, []);
 
@@ -21,4 +21,4 @@ const BookingsSS = ({navigation}) => {
   )
 }
 
-export default BookingsSS
+export default OrderSS
