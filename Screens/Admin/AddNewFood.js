@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'
-import { View } from 'react-native'
+import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import AlertPop from '../../Components/AlertPop/AlertPop'
 import Button from '../../Components/Button/Button'
 import TextField from '../../Components/TextField/TextField'
@@ -21,7 +21,7 @@ const AddNewFood = () => {
 
     const [popup, setPopup] = useState(false);
     const [errors, setErrors] = useState(false);
-
+    const [selected, setSelected] = useState(-1);
     // Function to clear form data when the user submits the form
 
     const AddFood = () => {
@@ -30,6 +30,9 @@ const AddNewFood = () => {
         setPrice();
         setURL("");
     }
+
+    const sizes = ['chicken ', 'fish', 'cheese'];
+
 
         // Function to add a new food item to the Firebase database
 
@@ -54,7 +57,21 @@ const AddNewFood = () => {
                 <TextField value={description} onChange={(text) => setDesc(text)} placeholder='Description' />
                 <TextField value={Price} onChange={(text) => setPrice(text)} keyboardType='decimal-pad' placeholder='Food Price' />
                 <TextField value={url} onChange={(text) => setURL(text)} placeholder='Photo URL' />
-    
+       <Text style={{marginVertical: 8, fontSize: 16, fontWeight: '500', textAlign: 'center'}}>Select the food type </Text>
+          <View>
+            {sizes.map((size, index) => (
+              <TouchableOpacity onPress={() => setSelected(index)} key={index}>
+                <Text
+                  style={{
+                    textDecorationLine:
+                      selected === index ? "underline" : "none",
+                  }}
+                >
+                  {size}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
                 <View style = {{alignItems: 'center'}}>
                     <Button title='Submit' onClick={() => addFoodItem()} />
                 </View>
