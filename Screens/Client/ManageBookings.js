@@ -96,7 +96,7 @@ const ManageBookings = ({ navigation, route }) => {
                     borderRadius: 20,
                   }}
                 >
-                  <Text>Are You Sure To Delete {selectedBooking.hotelID}?</Text>
+                  <Text>Are You Sure want To Delete {selectedBooking.hotelID}?</Text>
                   <View
                     style={{
                       flexDirection: "row",

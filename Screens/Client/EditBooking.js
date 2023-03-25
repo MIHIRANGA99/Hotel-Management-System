@@ -48,7 +48,8 @@ const EditBooking = ({ navigation, route }) => {
       route.params.bookingID,
       () => alert("Booking Details Updated Sucessfully!"),
       navigation.navigate("ManageBookings"),
-      () => alert("Cannot Update! Try Again")
+      () => alert("Cannot Update! Try Again"),
+      navigation.navigate("ManageBookings"),
     );
   };
 
@@ -68,7 +69,7 @@ const EditBooking = ({ navigation, route }) => {
         <View style={{ paddingBottom: 12 }}>
           <Text style={{ fontSize: 16 }}>{hotel.location}</Text>
           <Text style={{ fontSize: 16 }}>{hotel.rooms} Bed Rooms</Text>
-          <Text style={{ fontSize: 16 }}>LKR {hotel.amount} Per Day</Text>
+          <Text style={{ fontSize: 16 }}>LKR: {hotel.amount} Per Day</Text>
         </View>
         <View>
           <Text style={{ fontSize: 18, fontWeight: "600", marginBottom: 12 }}>
