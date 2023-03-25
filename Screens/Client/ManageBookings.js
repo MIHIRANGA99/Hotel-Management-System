@@ -6,14 +6,13 @@ import {
   getCurrentUser,
   getDataFromCollection,
 } from "../../firebase/utils";
-import AlertPop from '../../Components/AlertPop/AlertPop'
+import AlertPop from "../../Components/AlertPop/AlertPop";
 
 const ManageBookings = ({ navigation, route }) => {
   const [hotels, setHotels] = useState([]);
   const [showPopup, setShowPopUp] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState({});
   const [popup, setPopup] = useState(false);
-  const [errors, setErrors] = useState(false);
 
   useEffect(() => {
     readBookings();
@@ -30,7 +29,6 @@ const ManageBookings = ({ navigation, route }) => {
   };
 
   return (
-    
     <ScrollView style={{ padding: 12 }}>
       {hotels
         .filter((booking) => booking.userID === getCurrentUser().uid)
@@ -46,7 +44,8 @@ const ManageBookings = ({ navigation, route }) => {
             key={booking.id}
           >
             <Text style={{ flex: 1 }}>Booking ID: {booking.id}</Text>
-            <Text style={{ flex: 1 }}>Total Days: {booking.dayCount}</Text>
+            <Text style={{ flex: 1 }}>Total Days: {booking.dayCount} </Text>
+            <Text style={{ flex: 1 }}>Person Count: {booking.personCount}</Text>
             <Text
               style={{
                 flex: 1,
@@ -55,7 +54,7 @@ const ManageBookings = ({ navigation, route }) => {
                 textAlign: "right",
               }}
             >
-              LKR {booking.price}
+              LKR: {booking.price}.00/=
             </Text>
             <View
               style={{
@@ -69,7 +68,7 @@ const ManageBookings = ({ navigation, route }) => {
                   navigation.navigate("EditBookings", {
                     hotelID: booking.hotelID,
                     bookingID: booking.id,
-                    persons: booking.personCount
+                    persons: booking.personCount,
                   })
                 }
                 extraStyles={{ marginTop: 8 }}
@@ -99,7 +98,9 @@ const ManageBookings = ({ navigation, route }) => {
                     borderRadius: 20,
                   }}
                 >
-                  <Text>Are You Sure want To Delete {selectedBooking.hotelID}?</Text>
+                  <Text>
+                    Are You Sure want To Delete {selectedBooking.hotelID}?
+                  </Text>
                   <View
                     style={{
                       flexDirection: "row",
@@ -131,7 +132,11 @@ const ManageBookings = ({ navigation, route }) => {
             </Modal>
           </View>
         ))}
-         <AlertPop show={popup} setShow={setPopup} message='Hotel Deleted Successfully!'  />
+      <AlertPop
+        show={popup}
+        setShow={setPopup}
+        message="Hotel Deleted Successfully!"
+      />
     </ScrollView>
   );
 };
