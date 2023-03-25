@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Button from "../../Components/Button/Button";
+import AlertPop from "../../Components/AlertPop/AlertPop";
 import TextField from "../../Components/TextField/TextField";
 import { getSingleDataFromCollection, updateFromCollection } from "../../firebase/utils";
 
@@ -8,6 +9,8 @@ const EditCart = ({ navigation, route }) => {
   const [food, setFood] = useState({});
   const [quantity, setQuantity] = useState(0);
   const [selected, setSelected] = useState(route.params.size);
+  const [popup, setPopup] = useState(false);
+  const [errors, setErrors] = useState(false);
 
   useEffect(() => {
     getSingleDataFromCollection("Cart", route.params.foodID)
@@ -25,7 +28,12 @@ const EditCart = ({ navigation, route }) => {
       size: selected
     }
 
-    updateFromCollection("Cart", updatedData, route.params.foodID, () => navigation.navigate('Food Items'), () => console.error('Cannot Update!'))
+    updateFromCollection("Cart", updatedData, route.params.foodID, () => {
+      setPopup(true); 
+      setTimeout(() => {
+        navigation.navigate('Food Items');
+      }, 1000);}, 
+      () => setErrors(true))
   }
 
   const sizes = ['Full', 'Half', 'Regular'];
@@ -79,6 +87,17 @@ const EditCart = ({ navigation, route }) => {
           Meal Size: {food.size}
         </Text>
       </View>
+      <AlertPop
+        show={popup}
+        setShow={setPopup}
+        message="Food Item Updated Successfully!"
+      />
+      <AlertPop
+        show={errors}
+        error
+        setShow={setErrors}
+        message="Error occured when Updating The Food!"
+      />
     </View>
   );
 };
