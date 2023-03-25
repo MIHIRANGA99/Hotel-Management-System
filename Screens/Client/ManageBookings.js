@@ -6,11 +6,14 @@ import {
   getCurrentUser,
   getDataFromCollection,
 } from "../../firebase/utils";
+import AlertPop from '../../Components/AlertPop/AlertPop'
 
 const ManageBookings = ({ navigation, route }) => {
   const [hotels, setHotels] = useState([]);
   const [showPopup, setShowPopUp] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState({});
+  const [popup, setPopup] = useState(false);
+  const [errors, setErrors] = useState(false);
 
   useEffect(() => {
     readBookings();
@@ -115,6 +118,7 @@ const ManageBookings = ({ navigation, route }) => {
                           () => {
                             readBookings();
                             setShowPopUp(false);
+                            setPopup(true);
                           },
                           () => console.error("Error occurd")
                         );
@@ -127,6 +131,7 @@ const ManageBookings = ({ navigation, route }) => {
             </Modal>
           </View>
         ))}
+         <AlertPop show={popup} setShow={setPopup} message='Hotel Deleted Successfully!'  />
     </ScrollView>
   );
 };
