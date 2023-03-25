@@ -6,6 +6,7 @@ import {
   getSingleDataFromCollection,
   updateFromCollection,
 } from "../../firebase/utils";
+import AlertPop from "../../Components/AlertPop/AlertPop";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { ScrollView } from "react-native";
 
@@ -17,6 +18,9 @@ const EditBooking = ({ navigation, route }) => {
   const [checkOut, setCheckOut] = useState(new Date());
   const [available, setAvailable] = useState(false);
   const [selected, setSelected] = useState(route.params.persons);
+
+  const [popup, setPopup] = useState(false);
+  const [errors, setErrors] = useState(false);
 
   useEffect(() => {
     getSingleDataFromCollection("Hotels", route.params.hotelID)
@@ -39,17 +43,20 @@ const EditBooking = ({ navigation, route }) => {
       dayCount: new Date(checkOut - checkIn).getDate(),
       price: new Date(checkOut - checkIn).getDate() * hotel.amount,
       hotelID: route.params.hotelID,
-      personCount: selected
+      personCount: selected,
     };
 
     updateFromCollection(
       "Bookings",
       data,
       route.params.bookingID,
-      () => alert("Booking Details Updated Sucessfully!"),
-      navigation.navigate("ManageBookings"),
-      () => alert("Cannot Update! Try Again"),
-      navigation.navigate("ManageBookings"),
+      () => {
+        setPopup(true);
+        setTimeout(() => {
+          navigation.navigate("ManageBookings");
+        }, 1000);
+      },
+      () => setErrors(true)
     );
   };
 
@@ -57,7 +64,11 @@ const EditBooking = ({ navigation, route }) => {
     setAvailable(true);
   };
 
-  const personCount = ['2 Person or Lower', '2 Person to 4 Person', '4 Person or Higher'];
+  const personCount = [
+    "2 Person or Lower",
+    "2 Person to 4 Person",
+    "4 Person or Higher",
+  ];
 
   return (
     <ScrollView>
@@ -77,10 +88,28 @@ const EditBooking = ({ navigation, route }) => {
           </Text>
           <Text style={{ fontSize: 16 }}>{hotel.description}</Text>
         </View>
-        <View style={{marginVertical: 12}}>
-          <Text style={{marginVertical: 8, fontSize: 16, fontWeight: '500', textAlign: 'center'}}>Select Person Count</Text>
+        <View style={{ marginVertical: 12 }}>
+          <Text
+            style={{
+              marginVertical: 8,
+              fontSize: 16,
+              fontWeight: "500",
+              textAlign: "center",
+            }}
+          >
+            Select Person Count
+          </Text>
           {personCount.map((person, index) => (
-            <TouchableOpacity onPress={() => setSelected(person)} key={index} ><Text style={{textDecorationLine: selected === person? 'underline': 'none'}}>{person}</Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => setSelected(person)} key={index}>
+              <Text
+                style={{
+                  textDecorationLine:
+                    selected === person ? "underline" : "none",
+                }}
+              >
+                {person}
+              </Text>
+            </TouchableOpacity>
           ))}
         </View>
         <View
@@ -100,6 +129,7 @@ const EditBooking = ({ navigation, route }) => {
         {showCheckIn && (
           <DateTimePicker
             testID="dateTimePicker"
+            minimumDate={new Date()}
             value={checkIn}
             mode="date"
             is24Hour={true}
@@ -112,6 +142,7 @@ const EditBooking = ({ navigation, route }) => {
         {showCheckOut && (
           <DateTimePicker
             testID="dateTimePicker"
+            minimumDate={new Date()}
             value={checkOut}
             mode="date"
             is24Hour={true}
@@ -166,6 +197,17 @@ const EditBooking = ({ navigation, route }) => {
           />
         )}
       </View>
+      <AlertPop
+        show={popup}
+        setShow={setPopup}
+        message="Hotel Updated Successfully!"
+      />
+      <AlertPop
+        show={errors}
+        error
+        setShow={setErrors}
+        message="Cannot Update The Hotel!"
+      />
     </ScrollView>
   );
 };

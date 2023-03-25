@@ -7,6 +7,7 @@ import {
   getCurrentUser,
   getSingleDataFromCollection,
 } from "../../firebase/utils";
+import AlertPop from '../../Components/AlertPop/AlertPop'
 
 const BookHotel = ({ navigation, route }) => {
   const [hotel, setHotel] = useState({});
@@ -16,6 +17,9 @@ const BookHotel = ({ navigation, route }) => {
   const [checkOut, setCheckOut] = useState(new Date());
   const [available, setAvailable] = useState(false);
   const [selected, setSelected] = useState(-1);
+
+  const [popup, setPopup] = useState(false);
+  const [errors, setErrors] = useState(false);
 
   useEffect(() => {
     getSingleDataFromCollection("Hotels", route.params.hotelID)
@@ -37,10 +41,13 @@ const BookHotel = ({ navigation, route }) => {
     createData(
       "Bookings",
       data,
-      () => alert("Hotel Room Booked Sucessfully!"),
-      navigation.navigate("ViewHotels"),
-      () => alert("Cannot Book! Try Again"),
-      navigation.navigate("ViewHotels"),
+      () => {
+        setPopup(true);
+        setTimeout(() => {
+          navigation.navigate("ViewHotels");
+        }, 1000);
+      },
+      () => setErrors(true)
     );
   };
 
@@ -58,7 +65,7 @@ const BookHotel = ({ navigation, route }) => {
       />
       <View style={{ padding: 12 }}>
         <View style={{ paddingBottom: 12 }}>
-          <Text style={{ fontSize: 16 }}>{hotel.location}</Text>
+          <Text style={{ fontSize: 16 }}>Location: {hotel.location}</Text>
           <Text style={{ fontSize: 16 }}>{hotel.rooms} Bed Rooms</Text>
           <Text style={{ fontSize: 16 }}>LKR: {hotel.amount} Per Day</Text>
         </View>
@@ -143,11 +150,11 @@ const BookHotel = ({ navigation, route }) => {
               Dates {available ? "Available" : "Unavailable"}
             </Text>
             <View>
-              <Text>CheckIn Date: {checkIn.toDateString()}</Text>
-              <Text>CheckOut Date: {checkOut.toDateString()}</Text>
+              <Text>Check In Date:  {checkIn.toDateString()}</Text>
+              <Text>Check Out Date:  {checkOut.toDateString()}</Text>
               <Text>
-                Total Price: LKR
-                {new Date(checkOut - checkIn).getDate() * hotel.amount}.00
+                Total Price: LKR:
+                &nbsp;{new Date(checkOut - checkIn).getDate() * hotel.amount}.00/=
               </Text>
             </View>
             <Button onClick={() => addBooking()} title="Confirm Booking" />
@@ -159,6 +166,8 @@ const BookHotel = ({ navigation, route }) => {
           />
         )}
       </View>
+      <AlertPop show={popup} setShow={setPopup} message='Hotel Booked Successfully!'  />
+      <AlertPop show={errors} error setShow={setErrors} message='Cannot Book The Hotel!'  />
     </ScrollView>
   );
 };
