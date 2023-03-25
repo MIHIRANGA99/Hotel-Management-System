@@ -20,9 +20,17 @@ const AddNewFood = () => {
     const [url, setURL] = useState("");
 
     const [popup, setPopup] = useState(false);
-    const [errors, setErrors] = useState(false);
+  
     const [selected, setSelected] = useState(-1);
     // Function to clear form data when the user submits the form
+
+
+    const [errors, setErrors] = useState({
+      foodName: false,
+      description: false,
+      price: false,
+      url: false,
+    });
 
     const AddFood = () => {
         setFoodName("");
@@ -42,7 +50,8 @@ const AddNewFood = () => {
             "description": description,
             "Price": Price,
             "url": url,
-        }
+        };
+       
 
        // Call the createData function from firebase/utils to add the data to the "Foods" collection in Firebase
 
@@ -53,9 +62,9 @@ const AddNewFood = () => {
     return (
         <View style = {mainStyles.centerPage}>
             <View style = {{width: '90%'}}>
-                <TextField value={FoodName} onChange={(text) => setFoodName(text)} placeholder='Food Name' />
-                <TextField value={description} onChange={(text) => setDesc(text)} placeholder='Description' />
-                <TextField value={Price} onChange={(text) => setPrice(text)} keyboardType='decimal-pad' placeholder='Food Price' />
+                <TextField value={FoodName} onChange={(text) => setFoodName(text)} placeholder='Food Name' required={true}  />
+                <TextField value={description} onChange={(text) => setDesc(text)} placeholder='Description'required={true} />
+                <TextField value={Price} onChange={(text) => setPrice(text)} keyboardType='decimal-pad' placeholder='Food Price'  />
                 <TextField value={url} onChange={(text) => setURL(text)} placeholder='Photo URL' />
        <Text style={{marginVertical: 8, fontSize: 16, fontWeight: '500', textAlign: 'center'}}>Select the food type </Text>
           <View>
