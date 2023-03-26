@@ -28,27 +28,31 @@ const BookHotel = ({ navigation, route }) => {
   }, []);
 
   const addBooking = () => {
-    const data = {
-      checkIn: checkIn,
-      checkOut: checkOut,
-      userID: getCurrentUser().uid,
-      dayCount: new Date(checkOut - checkIn).getDate(),
-      price: new Date(checkOut - checkIn).getDate() * hotel.amount,
-      hotelID: route.params.hotelID,
-      personCount: personCount[selected]
-    };
-
-    createData(
-      "Bookings",
-      data,
-      () => {
-        setPopup(true);
-        setTimeout(() => {
-          navigation.navigate("ViewHotels");
-        }, 1000);
-      },
-      () => setErrors(true)
-    );
+    if (selected != -1) {
+      const data = {
+        checkIn: checkIn,
+        checkOut: checkOut,
+        userID: getCurrentUser().uid,
+        dayCount: new Date(checkOut - checkIn).getDate(),
+        price: new Date(checkOut - checkIn).getDate() * hotel.amount,
+        hotelID: route.params.hotelID,
+        personCount: personCount[selected]
+      };
+  
+      createData(
+        "Bookings",
+        data,
+        () => {
+          setPopup(true);
+          setTimeout(() => {
+            navigation.navigate("ViewHotels");
+          }, 1000);
+        },
+        () => setErrors(true)
+      );
+    } else {
+      setErrors(true)
+    }
   };
 
   const checkAvailability = () => {
