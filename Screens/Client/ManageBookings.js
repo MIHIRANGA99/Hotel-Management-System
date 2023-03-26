@@ -135,7 +135,7 @@ const ManageBookings = ({ navigation, route }) => {
       <AlertPop
         show={popup}
         setShow={setPopup}
-        message="Hotel Deleted Successfully!"
+        message="Hotel Booking Details Deleted Successfully!"
       />
     </ScrollView>
   );

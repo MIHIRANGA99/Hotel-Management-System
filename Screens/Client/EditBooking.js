@@ -53,7 +53,7 @@ const EditBooking = ({ navigation, route }) => {
       () => {
         setPopup(true);
         setTimeout(() => {
-          navigation.navigate("ManageBookings");
+          navigation.navigate("Home");
         }, 1000);
       },
       () => setErrors(true)
@@ -200,7 +200,7 @@ const EditBooking = ({ navigation, route }) => {
       <AlertPop
         show={popup}
         setShow={setPopup}
-        message="Hotel Updated Successfully!"
+        message="Hotel Booking Details Updated Successfully!"
       />
       <AlertPop
         show={errors}
