@@ -16,7 +16,7 @@ const AddNewFood = () => {
 
     const [FoodName, setFoodName] = useState("");
     const [description, setDesc] = useState("");
-    const [Price, setPrice] = useState();
+    const [Price, setPrice] = useState(0);
     const [url, setURL] = useState("");
 
     const [popup, setPopup] = useState(false);
@@ -45,17 +45,20 @@ const AddNewFood = () => {
         // Function to add a new food item to the Firebase database
 
     const addFoodItem = () => {
-        data = {
-            "FoodName": FoodName,
-            "description": description,
-            "Price": Price,
-            "url": url,
-        };
-       
-
-       // Call the createData function from firebase/utils to add the data to the "Foods" collection in Firebase
-
-        createData("Foods", data, () => {setPopup(true); AddFood();}, () => {setErrors(true); AddFood()});
+        if (FoodName != '' && description != '' && Price != 0 && url != '') {
+            data = {
+                "FoodName": FoodName,
+                "description": description,
+                "Price": Price,
+                "url": url,
+            }
+    
+           // Call the createData function from firebase/utils to add the data to the "Foods" collection in Firebase
+    
+            createData("Foods", data, () => {setPopup(true); AddFood();}, () => {setErrors(true); AddFood()});
+        } else{
+            setErrors(true)
+        }
     }
 
 
@@ -86,7 +89,7 @@ const AddNewFood = () => {
                 </View>
             </View>
             <AlertPop show={popup} setShow={setPopup} message='New Foods  Added Successfully!'  />
-            <AlertPop show={errors} error setShow={setErrors} message='Cannot Add The Food TO The Store!'  />
+            <AlertPop show={errors} error setShow={setErrors} message='Cannot Add The Food to The Store!'  />
         </View>
       )
     }

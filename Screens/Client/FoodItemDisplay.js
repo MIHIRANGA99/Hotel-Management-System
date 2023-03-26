@@ -23,22 +23,26 @@ const FoodItemDisplay = ({ navigation }) => {
   }, []);
 
   const handleAddToCart = (foodItem) => {
-    const data = {
-      name: foodItem.FoodName,
-      price: foodItem.Price * quantity,
-      quantity: quantity,
-      size: sizes[selected],
-      url: foodItem.url,
-      userID: getCurrentUser().uid,
-    };
-    createData(
-      "Cart",
-      data,
-      () => {setPopup(true); setTimeout(() => {
-        navigation.navigate("Cart");
-      }, 1000);},
-      () => setErrors(true)
-    );
+    if (selected != -1) {
+      const data = {
+        name: foodItem.FoodName,
+        price: foodItem.Price * quantity,
+        quantity: quantity,
+        size: sizes[selected],
+        url: foodItem.url,
+        userID: getCurrentUser().uid,
+      };
+      createData(
+        "Cart",
+        data,
+        () => {setPopup(true); setTimeout(() => {
+          navigation.navigate("Cart");
+        }, 1000);},
+        () => setErrors(true)
+      );
+    } else {
+      setErrors(true)
+    }
   };
 
   const sizes = ['Full', 'Half', 'Regular'];
