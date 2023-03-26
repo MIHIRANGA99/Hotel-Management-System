@@ -50,7 +50,7 @@ const EditFoodMenu = ({navigation, route}) => {
 
         }
 
-        updateFromCollection("Foods", data, route.params.FoodID, () => {setPopup(true); navigation.navigate("AdminDB")}, () => setErrors(true))
+        updateFromCollection("Foods", data, route.params.FoodID, () => {setPopup(true); navigation.navigate("ManageAllFoodsMenu")}, () => setErrors(true))
     }
 
         // Render the form and popups
